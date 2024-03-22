@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/AriPay?serverTimezone=UTC&characterEncoding=UTF-8
+    password: phj@3473
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+  main:
+    allow-bean-definition-overriding: true
+
+jwt:
+  secret: DevCoopKioskAuthCertificateJsonWebTokenSecretKey!!
+
+server:
+  servlet:
+    context-path: /kiosk
