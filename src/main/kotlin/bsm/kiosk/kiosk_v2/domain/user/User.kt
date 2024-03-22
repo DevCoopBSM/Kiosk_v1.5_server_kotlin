@@ -1,5 +1,6 @@
 package bsm.kiosk.kiosk_v2.domain.user
 
+import bsm.kiosk.kiosk_v2.domain.kiosk_receipt.KioskReceipt
 import bsm.kiosk.kiosk_v2.domain.paylog.Paylog
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Entity
@@ -22,7 +23,8 @@ class User private constructor(
   accToken: String,
   refToken: String,
   pin: String,
-  payLog: List<Paylog>
+  payLog: List<Paylog>,
+  kioskReceipt: List<KioskReceipt>
 ){
   var codeNumber: String = codeNumber
     private set
@@ -55,5 +57,12 @@ class User private constructor(
     orphanRemoval = true
   )
   var payLog: List<Paylog> = payLog
+    private set
+  @OneToMany(
+    mappedBy = "id",
+    cascade = [CascadeType.ALL],
+    orphanRemoval = true
+  )
+  var kioskReceipt: List<KioskReceipt> = kioskReceipt
     private set
 }
