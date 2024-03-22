@@ -1,16 +1,20 @@
 package bsm.kiosk.kiosk_v2.domain.item
 
+import bsm.kiosk.kiosk_v2.domain.kiosk_receipt.KioskReceipt
+import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.OneToMany
 
 @Entity
 class Item private constructor(
   barcode: String,
   itemName: String,
-  price: Int
+  price: Int,
+  receipts: List<KioskReceipt>
 ){
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +26,12 @@ class Item private constructor(
     private set
   @Column(name = "itemPrice")
   var price: Int = price
+    private set
+  @OneToMany(
+    mappedBy = "id",
+    cascade = [CascadeType.ALL],
+    orphanRemoval = true
+  )
+  var receipts: List<KioskReceipt> = receipts
     private set
 }
