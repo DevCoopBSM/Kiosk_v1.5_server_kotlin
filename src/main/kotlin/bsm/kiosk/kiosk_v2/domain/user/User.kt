@@ -10,7 +10,7 @@ class User private constructor(
   @Id val studentNumber: Int,
   codeNumber: String,
   studentName: String,
-  email: String,
+  @Email(message = "이메일 형식을 확인해주세요") email: String,
   password: String,
   isAdmin: Short,
   isCoop: Short,
@@ -21,27 +21,27 @@ class User private constructor(
   pin: String
 ){
   var codeNumber: String = codeNumber
-    protected set
+    private set
   var studentName: String = studentName
-    protected set
+    private set
   var email: String = email
-    protected set
+    private set
   var password: String = password
-    protected set
+    private set
   var point: Int = 0
-    protected set
+    private set
   var isAdmin: Short = isAdmin
-    protected set
+    private set
   var isCoop: Short = isCoop
-    protected set
+    private set
   var type: String = type
-    protected set
+    private set
   var pointStatus: String  = pointStatus
-    protected set
+    private set
   var accToken: String = accToken
-    protected set
+    private set
   var refToken: String = refToken
-    protected set
+    private set
   var pin: String = pin
-    protected set
+    private set
 }
