@@ -1,7 +1,10 @@
 package bsm.kiosk.kiosk_v2.domain.user
 
+import bsm.kiosk.kiosk_v2.domain.paylog.Paylog
+import jakarta.persistence.CascadeType
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
+import jakarta.persistence.OneToMany
 import jakarta.validation.constraints.Email
 import org.antlr.v4.runtime.Token
 
@@ -18,7 +21,8 @@ class User private constructor(
   pointStatus: String,
   accToken: String,
   refToken: String,
-  pin: String
+  pin: String,
+  payLog: List<Paylog>
 ){
   var codeNumber: String = codeNumber
     private set
@@ -43,5 +47,13 @@ class User private constructor(
   var refToken: String = refToken
     private set
   var pin: String = pin
+    private set
+
+  @OneToMany(
+    mappedBy = "studentName",
+    cascade = [CascadeType.ALL],
+    orphanRemoval = true
+  )
+  var payLog: List<Paylog> = payLog
     private set
 }
