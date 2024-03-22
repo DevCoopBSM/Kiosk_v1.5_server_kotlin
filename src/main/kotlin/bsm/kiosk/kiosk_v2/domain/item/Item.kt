@@ -1,10 +1,12 @@
 package bsm.kiosk.kiosk_v2.domain.item
 
 import jakarta.persistence.Column
+import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
+@Entity
 class Item private constructor(
   barcode: String,
   itemName: String,
