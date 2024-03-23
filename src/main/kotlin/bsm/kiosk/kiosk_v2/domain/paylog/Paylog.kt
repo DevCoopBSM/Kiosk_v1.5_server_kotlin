@@ -18,7 +18,7 @@ class Paylog private constructor(
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "pay_num", nullable = false)
-  val payNum: Int = 0
+  val payNum: Long = 0L
   var codeNumber: String = codeNumber
     private set
   var date: LocalDateTime = date
