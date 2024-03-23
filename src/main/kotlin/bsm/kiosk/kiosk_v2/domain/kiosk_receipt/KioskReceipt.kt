@@ -8,7 +8,7 @@ import java.time.LocalDate
 @Entity
 class KioskReceipt private constructor(
   dcmSaleAmt: Int,
-  itemId: List<Item>,
+  itemId: MutableList<Item>,
   saleYn: String,
   userId: User,
   itemName: Item,
@@ -26,18 +26,23 @@ class KioskReceipt private constructor(
     cascade = [CascadeType.ALL],
     orphanRemoval = true
   )
-  var itemId: List<Item> = itemId // Item 아이디
+  var itemId: MutableList<Item> = itemId // Item 아이디
     private set
+
+  fun addItem(item: Item) {
+    this.itemId.add(item)
+    item.receipts.add(this)
+  }
+
   var saleYn: String = saleYn // 팔렸으면 Y, 아니면 N
     private set
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "studentNumber")
   var userId: User = userId // User 아이디(영수증 번호)
-    private set
+
   @ManyToOne
   @JoinColumn(name = "itemId")
   var itemName: Item = itemName
-    private set
   var saleQty: Int = saleQty
     private set
   var date: LocalDate = date
