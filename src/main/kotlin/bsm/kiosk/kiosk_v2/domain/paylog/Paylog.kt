@@ -34,5 +34,4 @@ class Paylog private constructor(
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "studentNumber")
   var studentName: User = studentName
-    private set
 }

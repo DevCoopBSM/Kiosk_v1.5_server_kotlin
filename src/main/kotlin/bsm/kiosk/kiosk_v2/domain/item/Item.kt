@@ -14,7 +14,7 @@ class Item private constructor(
   barcode: String,
   itemName: String,
   price: Int,
-  receipts: List<KioskReceipt>
+  receipts: MutableList<KioskReceipt>
 ){
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ class Item private constructor(
   var barcode: String = barcode
     private set
   var itemName: String = itemName
-    private set
+
   @Column(name = "itemPrice")
   var price: Int = price
     private set
@@ -32,6 +32,10 @@ class Item private constructor(
     cascade = [CascadeType.ALL],
     orphanRemoval = true
   )
-  var receipts: List<KioskReceipt> = receipts
+  var receipts: MutableList<KioskReceipt> = receipts
     private set
+  fun addKioskReceipt(kioskReceipt: KioskReceipt) {
+    kioskReceipt.itemName = this
+    this.receipts.add(kioskReceipt)
+  }
 }

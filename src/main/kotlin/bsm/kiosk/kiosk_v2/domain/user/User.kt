@@ -23,8 +23,8 @@ class User private constructor(
   accToken: String,
   refToken: String,
   pin: String,
-  payLog: List<Paylog>,
-  kioskReceipt: List<KioskReceipt>
+  payLog: MutableList<Paylog>,
+  kioskReceipt: MutableList<KioskReceipt>
 ){
   var codeNumber: String = codeNumber
     private set
@@ -56,13 +56,23 @@ class User private constructor(
     cascade = [CascadeType.ALL],
     orphanRemoval = true
   )
-  var payLog: List<Paylog> = payLog
+  var payLog: MutableList<Paylog> = payLog
     private set
+  fun addPaylog(paylog: Paylog) {
+    paylog.studentName = this
+    this.payLog.add(paylog)
+  }
+
+
   @OneToMany(
     mappedBy = "id",
     cascade = [CascadeType.ALL],
     orphanRemoval = true
   )
-  var kioskReceipt: List<KioskReceipt> = kioskReceipt
+  var kioskReceipt: MutableList<KioskReceipt> = kioskReceipt
     private set
+  fun addKioskReceipt(kioskReceipt: KioskReceipt) {
+    kioskReceipt.userId = this
+    this.kioskReceipt.add(kioskReceipt)
+  }
 }
