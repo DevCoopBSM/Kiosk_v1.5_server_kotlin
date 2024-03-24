@@ -1,41 +1,36 @@
 package bsm.kiosk.kiosk_v2.domain.item
 
+import bsm.kiosk.kiosk_v2.domain.inventory.Inventory
 import bsm.kiosk.kiosk_v2.domain.kiosk_receipt.KioskReceipt
-import jakarta.persistence.CascadeType
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.OneToMany
+import jakarta.persistence.*
 
 @Entity
 class Item private constructor(
   barcode: String,
   itemName: String,
   price: Int,
-  receipts: MutableList<KioskReceipt>
+  receipt: KioskReceipt,
+  inventory: Inventory
 ){
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "itemId")
-  val id: Long = 0L
+  var id: Long = 0L
+
   var barcode: String = barcode
     private set
+
   var itemName: String = itemName
 
   @Column(name = "itemPrice")
   var price: Int = price
     private set
-  @OneToMany(
-    mappedBy = "id",
-    cascade = [CascadeType.ALL],
-    orphanRemoval = true
-  )
-  var receipts: MutableList<KioskReceipt> = receipts
-    private set
-  fun addKioskReceipt(kioskReceipt: KioskReceipt) {
-    kioskReceipt.itemName = this
-    this.receipts.add(kioskReceipt)
-  }
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "number")
+  var receipt: KioskReceipt = receipt
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "inventory_id")
+  var inventory: Inventory = inventory
 }

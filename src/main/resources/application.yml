@@ -11,9 +11,6 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
-jwt:
-  secret: DevCoopKioskAuthCertificateJsonWebTokenSecretKey!!
-
 server:
   servlet:
     context-path: /kiosk

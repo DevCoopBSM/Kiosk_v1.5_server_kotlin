@@ -1,7 +1,6 @@
 package bsm.kiosk.kiosk_v2.domain.paylog
 
 import bsm.kiosk.kiosk_v2.domain.user.User
-import com.fasterxml.jackson.core.sym.Name
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
