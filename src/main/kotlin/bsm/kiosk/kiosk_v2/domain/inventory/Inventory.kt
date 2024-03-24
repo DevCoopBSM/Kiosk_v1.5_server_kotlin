@@ -28,4 +28,9 @@ class Inventory private constructor(
   )
   var items: MutableList<Item> = mutableListOf()
     private set
+
+  fun addItems(item: Item) {
+    item.inventory = this
+    this.items.add(item)
+  }
 }

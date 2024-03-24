@@ -37,4 +37,9 @@ class KioskReceipt private constructor(
   @OneToMany(mappedBy = "receipt", cascade = [CascadeType.ALL], orphanRemoval = true)
   var items: MutableList<Item> = mutableListOf()
     private set
+
+  fun addItems(item: Item) {
+    item.receipt = this
+    this.items.add(item)
+  }
 }

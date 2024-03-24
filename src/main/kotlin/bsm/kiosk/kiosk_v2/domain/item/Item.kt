@@ -15,7 +15,7 @@ class Item private constructor(
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "itemId")
-  val id: Long = 0L
+  var id: Long = 0L
 
   var barcode: String = barcode
     private set
@@ -29,10 +29,8 @@ class Item private constructor(
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "number")
   var receipt: KioskReceipt = receipt
-    private set
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "inventory_id")
   var inventory: Inventory = inventory
-    private set
 }
