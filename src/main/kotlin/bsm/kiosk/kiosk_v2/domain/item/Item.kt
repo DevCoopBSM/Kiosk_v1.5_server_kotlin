@@ -21,6 +21,7 @@ class Item private constructor(
     private set
 
   var itemName: String = itemName
+    private set
 
   @Column(name = "itemPrice")
   var price: Int = price
