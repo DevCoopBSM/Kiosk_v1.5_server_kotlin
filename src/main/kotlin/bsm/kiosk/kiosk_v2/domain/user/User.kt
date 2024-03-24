@@ -6,10 +6,11 @@ import jakarta.persistence.CascadeType
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.persistence.OneToMany
+import jakarta.persistence.Table
 import jakarta.validation.constraints.Email
-import org.antlr.v4.runtime.Token
 
 @Entity
+@Table(name = "users")
 class User private constructor(
   @Id val studentNumber: Int,
   codeNumber: String,
@@ -23,8 +24,6 @@ class User private constructor(
   accToken: String,
   refToken: String,
   pin: String,
-  payLog: MutableList<Paylog>,
-  kioskReceipt: MutableList<KioskReceipt>
 ){
   var codeNumber: String = codeNumber
     private set
@@ -56,7 +55,7 @@ class User private constructor(
     cascade = [CascadeType.ALL],
     orphanRemoval = true
   )
-  var payLog: MutableList<Paylog> = payLog
+  var payLog: MutableList<Paylog> = mutableListOf()
     private set
   fun addPaylog(paylog: Paylog) {
     paylog.studentName = this
@@ -69,7 +68,7 @@ class User private constructor(
     cascade = [CascadeType.ALL],
     orphanRemoval = true
   )
-  var kioskReceipt: MutableList<KioskReceipt> = kioskReceipt
+  var kioskReceipt: MutableList<KioskReceipt> = mutableListOf()
     private set
   fun addKioskReceipt(kioskReceipt: KioskReceipt) {
     kioskReceipt.userId = this
