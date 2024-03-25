@@ -10,7 +10,7 @@ class Paylog private constructor(
   date: LocalDateTime,
   type: Short,
   innerPoint: Int,
-  chargerId: String,
+  chargerId: ChargeType,
   verifyKey: String,
   studentName: User
 ){
@@ -26,7 +26,9 @@ class Paylog private constructor(
     private set
   var innerPoint: Int = innerPoint
     private set
-  var chargerId: String = chargerId
+
+  @Enumerated(EnumType.STRING)
+  var chargerId: ChargeType = chargerId
     private set
   var verifyKey: String = verifyKey
     private set
