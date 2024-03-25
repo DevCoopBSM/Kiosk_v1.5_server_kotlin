@@ -6,8 +6,6 @@ import java.time.LocalDateTime
 
 @Entity
 class Inventory private constructor(
-  itemId: Int,
-  itemName: String,
   quantity: Int,
   lastUpdated: LocalDateTime
 ) {
