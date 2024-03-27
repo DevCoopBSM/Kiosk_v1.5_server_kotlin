@@ -8,6 +8,7 @@ spring:
     hibernate:
       ddl-auto: create
     generate-ddl: true
+    show-sql: true
   main:
     allow-bean-definition-overriding: true
 
