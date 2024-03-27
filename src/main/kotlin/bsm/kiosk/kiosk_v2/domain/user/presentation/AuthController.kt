@@ -18,6 +18,6 @@ class AuthController(
   @PostMapping(ApiPath.AUTH_PATH + "/signIn")
   @Operation(summary = "sign in", description = "로그인")
   fun signIn(@RequestBody loginRequest: LoginRequest): LoginResponse? {
-    return authService.register(loginRequest);
+    return authService.register(loginRequest)
   }
 }
