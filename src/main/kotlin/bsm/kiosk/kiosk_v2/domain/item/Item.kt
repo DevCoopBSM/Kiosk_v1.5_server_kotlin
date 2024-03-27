@@ -6,32 +6,14 @@ import jakarta.persistence.*
 
 @Entity
 class Item private constructor(
-  barcode: String,
-  itemName: String,
-  price: Int,
-  receipt: KioskReceipt,
-  inventory: Inventory
+  var barcode: String,
+  var itemName: String,
+  @Column(name = "itemPrice") var price: Int,
+  @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "number") var receipt: KioskReceipt,
+  @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "inventory_id") var inventory: Inventory
 ){
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "itemId")
   var id: Long = 0L
-
-  var barcode: String = barcode
-    private set
-
-  var itemName: String = itemName
-    private set
-
-  @Column(name = "itemPrice")
-  var price: Int = price
-    private set
-
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "number")
-  var receipt: KioskReceipt = receipt
-
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "inventory_id")
-  var inventory: Inventory = inventory
 }
