@@ -14,6 +14,12 @@ class AuthService(
   private val bCryptPasswordEncoder: BCryptPasswordEncoder,
 ) {
   fun register(dto: LoginRequest): LoginResponse? {
+    val codeNumber: String = dto.codeNumber
+    val pin: String = dto.pin
+
+    if(codeNumber.isBlank() || pin.isBlank()) {
+      throw RuntimeException(message = "입력값이 없습니다.")
+    }
     return null;
   }
 }
