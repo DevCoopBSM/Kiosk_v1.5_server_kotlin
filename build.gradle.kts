@@ -28,6 +28,7 @@ repositories {
 dependencies {
   // P6SpyFormatter
   implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0")
+
   implementation("org.springframework.boot:spring-boot-starter-data-jpa")
   implementation("org.springframework.boot:spring-boot-starter-security")
   implementation("org.springframework.boot:spring-boot-starter-validation")
@@ -40,6 +41,9 @@ dependencies {
   annotationProcessor("org.projectlombok:lombok")
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("org.springframework.security:spring-security-test")
+  // doc
+  implementation ("org.springdoc:springdoc-openapi-ui:1.6.15")
+  runtimeOnly ("org.springframework.boot:spring-boot-docker-compose")
 }
 
 tasks.withType<KotlinCompile> {
