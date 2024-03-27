@@ -43,7 +43,6 @@ dependencies {
   testImplementation("org.springframework.security:spring-security-test")
   // doc
   implementation ("org.springdoc:springdoc-openapi-ui:1.6.15")
-  runtimeOnly ("org.springframework.boot:spring-boot-docker-compose")
 }
 
 tasks.withType<KotlinCompile> {

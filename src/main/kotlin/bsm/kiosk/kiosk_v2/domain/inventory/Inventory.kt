@@ -6,18 +6,13 @@ import java.time.LocalDateTime
 
 @Entity
 class Inventory private constructor(
-  quantity: Int,
-  lastUpdated: LocalDateTime
+  var quantity: Int,
+  var lastUpdated: LocalDateTime
 ) {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "inventory_id")
   val id: Long = 0L
-
-  var quantity: Int = quantity
-    private set
-  var lastUpdated: LocalDateTime = lastUpdated
-    private set
 
   @OneToMany(
     mappedBy = "id",
