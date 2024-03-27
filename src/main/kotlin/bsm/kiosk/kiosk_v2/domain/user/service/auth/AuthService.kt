@@ -18,7 +18,7 @@ class AuthService(
     val pin: String = dto.pin
 
     if(codeNumber.isBlank() || pin.isBlank()) {
-      throw RuntimeException(message = "입력값이 없습니다.")
+      throw RuntimeException(message = "입력 값이 없습니다.")
     }
     return null;
   }
