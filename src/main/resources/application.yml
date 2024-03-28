@@ -15,3 +15,6 @@ spring:
 server:
   servlet:
     context-path: /kiosk
+
+jwt:
+  secret: "jwt-DevCoop-kiosk.secret"
