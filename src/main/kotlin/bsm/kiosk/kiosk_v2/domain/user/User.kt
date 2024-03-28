@@ -18,12 +18,12 @@ class User private constructor(
   @Email(message = "이메일 형식을 확인해주세요") var email: String,
   var password: String,
   var point: Int,
-  var isAdmin: Short,
-  var isCoop: Short,
-  var type: String,
-  var pointStatus: String,
-  var accToken: String,
-  var refToken: String,
+  var isAdmin: Short?,
+  var isCoop: Short?,
+  var type: String?,
+  var pointStatus: String?,
+  var accToken: String?,
+  var refToken: String?,
   var pin: String,
 ){
   @OneToMany(
